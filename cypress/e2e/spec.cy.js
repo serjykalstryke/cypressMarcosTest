@@ -41,26 +41,26 @@ describe("template spec", () => {
     //Go back to home page
     cy.visit("https://www.marcos.com");
 
-    // // Click sign up button
-    // cy.get(".navigation").find(".navigation--login").click();
+    // Click sign up button
+    cy.get(".navigation").find(".navigation--login").click();
 
-    // // enter address to find local stores
-    // cy.get("#sn-address").type("4020 Fine Creek Path");
-    // cy.get("#sn-city").type("Powhatan");
-    // cy.get("#modalSignupStore")
-    //   .find(".columns")
-    //   .find(".column")
-    //   .find(".field")
-    //   .find(".control")
-    //   .find("#state")
-    //   .select("VA");
-    // cy.get("#sn-zip").type("23139");
+    // enter address to find local stores
+    cy.get("#sn-address").type("4020 Fine Creek Path");
+    cy.get("#sn-city").type("Powhatan");
+    cy.get("#modalSignupStore")
+      .find(".columns")
+      .find(".column")
+      .find(".field")
+      .find(".control")
+      .find("#state")
+      .select("VA");
+    cy.get("#sn-zip").type("23139");
 
-    // // click see stores button
-    // cy.get(".button").contains("See Stores").click();
+    // click see stores button
+    cy.get(".button").contains("See Stores").click();
 
-    // // click on first store
-    // cy.get(".button").contains("sign in").click();
+    // click on first store
+    cy.get(".button").contains("sign in").click();
 
     // // click the register account button
     // cy.get("#register").click();
@@ -136,5 +136,8 @@ describe("template spec", () => {
     // cy.get("#sign-up").click();
 
     // Cannot fully test sign-up without access to the backend code, so moving on to next test using a manually created account
+    cy.get("#user-email").type("davidstinnett@icloud.com");
+    cy.get("#password").type("abcd1234!");
+    cy.get("#login").click();
   });
 });
