@@ -44,7 +44,7 @@ describe("template spec", () => {
     // Click sign up button
     cy.get(".navigation").find(".navigation--login").click();
 
-    // enter address to find local stores
+    // enter address to find local stores (this doubles as a test of the geolocation functionality)
     cy.get("#sn-address").type("4020 Fine Creek Path");
     cy.get("#sn-city").type("Powhatan");
     cy.get("#modalSignupStore")
@@ -139,5 +139,35 @@ describe("template spec", () => {
     cy.get("#user-email").type("davidstinnett@icloud.com");
     cy.get("#password").type("abcd1234!");
     cy.get("#login").click();
+
+    cy.wait(1000);
+
+    // test pizza builder
+
+    //select customize button on first option
+    cy.get(".recently-ordered-item")
+      .find(".panel-item-footer")
+      .find(".buttons-wrapper")
+      .find(".selection-btn")
+      .contains("Customize")
+      .eq(0)
+      .click();
+
+    // select crust
+    cy.get(".custom-radio-details").eq(1).click();
+
+    // click sauce tab
+    cy.get(".ingredient-choice").contains("Sauce").click();
+
+    // select amount of sauce and cheese
+    cy.get(".ng-trigger").contains("Amount?").click();
+    cy.get(".ingredient-qualifier-btn").contains("Light").click();
+    cy.get(".ingredient-qualifier-btn").contains("Double").click();
+
+    // click Pizza Crust Toppers tab
+    cy.get(".ingredient-choice").contains("Toppers").click();
+
+    // select crust toppers
+    cy.get(".ingredient-info").contains("Garlic").click();
   });
 });
