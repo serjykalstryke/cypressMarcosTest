@@ -68,5 +68,19 @@ describe("template spec", () => {
     // enter user details
     cy.get("#firstName").type("Rusty");
     cy.get("#lastName").type("Shackleford");
+    cy.get("#phone").type("804-555-5555");
+    cy.get("#email").type("rusty@shackleford.com");
+    cy.get("#password").type("abcd1234!");
+    cy.get(".month-field-container").find(".form-control").select("1");
+    cy.get(".year-field-container").find(".form-control").select("31");
+    cy.get("#AQ0-1").select("Email");
+
+    // agree to terms and conditions
+    cy.get(".custom-checkbox-details").eq(2).click();
+
+    // I am not a robot (TODO: figure out how to get past this)
+    cy.get("#rc-anchor-container").click();
+
+    // click create account button
   });
 });
