@@ -37,5 +37,36 @@ describe("template spec", () => {
     cy.get("#order-tree-toggle-btn").click();
 
     cy.get(".ng-tns-c187-9").contains("Lg. Pepperoni Magnifico");
+
+    //Go back to home page
+    cy.visit("https://www.marcos.com");
+
+    // Click sign up button
+    cy.get(".navigation").find(".navigation--login").click();
+
+    // enter address to find local stores
+    cy.get("#sn-address").type("4020 Fine Creek Path");
+    cy.get("#sn-city").type("Powhatan");
+    cy.get("#modalSignupStore")
+      .find(".columns")
+      .find(".column")
+      .find(".field")
+      .find(".control")
+      .find("#state")
+      .select("VA");
+    cy.get("#sn-zip").type("23139");
+
+    // click see stores button
+    cy.get(".button").contains("See Stores").click();
+
+    // click on first store
+    cy.get(".button").contains("sign in").click();
+
+    // click the register account button
+    cy.get("#register").click();
+
+    // enter user details
+    cy.get("#firstName").type("Rusty");
+    cy.get("#lastName").type("Shackleford");
   });
 });
