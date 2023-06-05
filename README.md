@@ -1,5 +1,7 @@
 # cypressMarcosTest
 
+## Description
+
 Test file to check functionality of Marco's Pizza Website. Starts in terminal, opens windows for Cypress test suite to run test file
 
 # TO RUN
@@ -48,3 +50,11 @@ npx cypress open
 # Media Gallery
 
 [CleanShot 2023-06-04 at 21.27.04 - 01.webm](https://github.com/serjykalstryke/cypressMarcosTest/assets/68971513/3a10db3d-036c-4f82-b5ac-3b8bb3d14248)
+
+## Contact
+
+Feel free to get in touch to suggest improvements to functionality
+
+Phone: 804-972-1754
+Email: davidstinnett@icloud.com
+LinkedIn: https://www.linkedin.com/davidnotonstinnett
