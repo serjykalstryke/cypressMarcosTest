@@ -1,19 +1,13 @@
-//* 1. Visit the Marcos website
-//* 2. Click the "Start Your Order" button
-//* 3. Click "other location" button
-//* 4. Enter address
-//* 5. Click "find address" button
-//* 6. Click "Carryout" button
-//* 7. Click button to order Lg. Pepperoni Magnifico
-//* 8. Click "View Order" button
-//* 9. Verify that the order is correct
-
 describe("template spec", () => {
   it("passes", () => {
+    // test that the home page loads
     cy.visit("https://www.marcos.com");
+    // starts order
     cy.get("#navigationStartOrder").click();
+    // set location from address
     cy.get(".other-loc-cta").click();
 
+    // enter address to find local stores (this doubles as a test of the geolocation functionality)
     cy.get("#addrClientInput").type("4020 Fine Creek Path");
 
     cy.get("#cityClientInput").type("Powhatan");
@@ -27,15 +21,21 @@ describe("template spec", () => {
 
     cy.contains("a", "Carryout").click();
 
+    cy.wait(5000);
+
+    // add a pizza to the order
     cy.get(".recently-ordered-item")
+      .should("be.visible")
       .find(".panel-item-footer")
       .find(".buttons-wrapper")
       .find(".order-btn")
       .eq(1)
       .click();
 
+    // show cart
     cy.get("#order-tree-toggle-btn").click();
 
+    // check cart for item
     cy.get(".ng-tns-c187-9").contains("Lg. Pepperoni Magnifico");
 
     //Go back to home page
@@ -61,6 +61,8 @@ describe("template spec", () => {
 
     // click on first store
     cy.get(".button").contains("sign in").click();
+
+    cy.wait(5000);
 
     // // click the register account button
     // cy.get("#register").click();
@@ -136,16 +138,19 @@ describe("template spec", () => {
     // cy.get("#sign-up").click();
 
     // Cannot fully test sign-up without access to the backend code, so moving on to next test using a manually created account
+
+    //* test login
     cy.get("#user-email").type("davidstinnett@icloud.com");
     cy.get("#password").type("abcd1234!");
     cy.get("#login").click();
 
-    cy.wait(1000);
+    cy.wait(5000);
 
-    // test pizza builder
+    //* test pizza builder
 
     //select customize button on first option
     cy.get(".recently-ordered-item")
+      .should("be.visible")
       .find(".panel-item-footer")
       .find(".buttons-wrapper")
       .find(".selection-btn")
@@ -164,10 +169,114 @@ describe("template spec", () => {
     cy.get(".ingredient-qualifier-btn").contains("Light").click();
     cy.get(".ingredient-qualifier-btn").contains("Double").click();
 
+    //the above test, though passing, seems to point to an issue with the site. It seems like you should be able to pick either light or double, but not both. I'm not sure if this is a bug or if the site is designed to allow this.
+
     // click Pizza Crust Toppers tab
     cy.get(".ingredient-choice").contains("Toppers").click();
 
     // select crust toppers
     cy.get(".ingredient-info").contains("Garlic").click();
+    cy.get(".ingredient-info").contains("Parm").click();
+    cy.get(".ingredient-info").contains("Romasean").click();
+    cy.get(".ingredient-info").contains("Roma Crust").click();
+
+    // click Pizza Toppings tab
+    cy.get(".ng-tns-c262-9").contains("Toppings").click();
+
+    // select toppings
+    cy.get(".ingredient-label").contains("Pepperoni").click();
+    cy.get(".ingredient-label").contains("Old World").click();
+    cy.get(".ingredient-label").contains("Italian").click();
+    cy.get(".ingredient-label").contains("Bacon").click();
+    cy.get(".ingredient-label").contains("Ham").click();
+    cy.get(".ingredient-label").contains("Steak").click();
+    cy.get(".ingredient-label").contains("Meatballs").click();
+    cy.get(".ingredient-label").contains("Chicken").click();
+    cy.get(".ingredient-label").contains("Beef").click();
+    cy.get(".ingredient-label").contains("Anchovies").click();
+    cy.get(".ingredient-label").contains("Salami").click();
+
+    // select veggies tab
+    cy.get(".ng-tns-c256-20").contains("Veggies").click();
+
+    // select veggies
+    cy.get(".ingredient-label").contains("Mushrooms").click();
+    cy.get(".ingredient-label").contains("Onions").click();
+    cy.get(".ingredient-label").contains("Red Onions").click();
+    cy.get(".ingredient-label").contains("Green Peppers").click();
+    cy.get(".ingredient-label").contains("Banana Peppers").click();
+    cy.get(".ingredient-label").contains("Black Olives").click();
+    cy.get(".ingredient-label").contains("Green Olives").click();
+    cy.get(".ingredient-label").contains("Jalapenos").click();
+    cy.get(".ingredient-label").contains("Pineapple").click();
+    cy.get(".ingredient-label").contains("Tomatoes").click();
+    cy.get(".ingredient-label").contains("Spinach").click();
+
+    // select other toppings tab
+    cy.get(".ng-tns-c256-20").contains("other").click();
+
+    // select other toppings
+    cy.get(".ingredient-label").contains("Extra").click();
+    cy.get(".ingredient-label").contains("Feta").click();
+    cy.get(".ingredient-label").contains("Cheddar").click();
+    cy.get(".ingredient-label").contains("Shaved").click();
+
+    // select sides tab
+    cy.get(".ng-tns-c262-9").contains("Sides").click();
+
+    // select sides
+    cy.get(".ingredient-label").contains("Parm").click();
+    cy.get(".ingredient-label").contains("BBQ").click();
+    cy.get(".ingredient-label").contains("Jalapenos").click();
+    cy.get(".ingredient-label").contains("Banana").click();
+    cy.get(".ingredient-label").contains("Garlic").click();
+    cy.get(".ingredient-label").contains("Pizza").click();
+    cy.get(".ingredient-label").contains("Ranch").click();
+    cy.get(".ingredient-label").contains("Red").click();
+    cy.get(".ingredient-label").contains("Blue").click();
+
+    // close cookie banner
+    cy.get(".policy-alert").find(".btn").eq(1).click();
+
+    // add to order
+    cy.get(".submit-btn").click();
+
+    // check cart for both items
+    cy.get("#order-tree-toggle-btn").click();
+    cy.wait(2000);
+    cy.get("#order-tree-toggle-btn").click();
+    cy.wait(2000);
+
+    cy.get(".ng-tns-c178-110").contains("Lg. Pepperoni Magnifico");
+    cy.get(".ng-tns-c178-112").contains("Lg. Thin BUILD YOUR OWN");
+
+    // Remove build your own pizza from cart
+    cy.get(".ng-tns-c178-112").contains("Remove").click();
+
+    //* Test coupon code functionality
+
+    // type coupon code
+    cy.get("#coupon-code").type("SPECIAL3");
+
+    // apply coupon code
+    cy.get(".btn").contains("Apply").click();
+
+    //* checkout process
+
+    // click checkout button
+    cy.get("#order-tree-checkout").click();
+
+    // clear phone number field
+    cy.get("#guestPhone").clear().type("804-555-5555");
+    // the account sign up form won't let me use the above phone number, so it seems like the checkout process also shouldn't allow this phone number. I'm not sure if this is a bug or if the site is designed to allow this.
+
+    // click continue to order details button
+    cy.get("#continue-to-order-details-btn").click();
+
+    // click continue to payment button
+    cy.get("#continue-to-payment-btn").click();
+
+    // place order
+    cy.get("#place-order-btn").click();
   });
 });
