@@ -2,7 +2,8 @@
 
 ## Description
 
-Test file to check functionality of Marco's Pizza Website. Starts in terminal, opens windows for Cypress test suite to run test file
+Test file to check functionality of Marco's Pizza Website. <br/>
+Starts in terminal, opens windows for Cypress test suite to run test file
 
 # TO RUN
 
