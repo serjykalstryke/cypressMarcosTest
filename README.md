@@ -11,13 +11,21 @@ _text in italics are clarification on the steps_
 
 **_In your terminal:_**
 
-```
 cd **insert whatever directory for where you want the files do be cloned into**
-git clone https://github.com/serjykalstryke/cypressMarcosTest.git
 
-*the following will install dependencies for the test*
+```
+git clone https://github.com/serjykalstryke/cypressMarcosTest.git
+```
+
+**install dependencies for the test**
+
+```
 npm install
-*the following will open the test environment.
+```
+
+**open the test environment**
+
+```
 npx cypress open
 ```
 
