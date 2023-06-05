@@ -46,3 +46,5 @@ npx cypress open
 ## 6) Wait for testing to complete
 
 # Media Gallery
+
+[Uploading CleanShot 2023-06-04 at 21.27.04.webm…]()
