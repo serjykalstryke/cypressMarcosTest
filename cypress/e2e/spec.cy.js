@@ -278,5 +278,7 @@ describe("template spec", () => {
 
     // place order
     cy.get("#place-order-btn").click();
+
+    //the next step would be to add card information and then click the place order button, but I do not want a pizza today, so I will leave this test where it is at.
   });
 });
