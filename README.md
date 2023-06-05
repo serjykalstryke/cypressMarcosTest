@@ -56,8 +56,8 @@ npx cypress open
 
 ## Contact
 
-Feel free to get in touch to suggest improvements to functionality
+Feel free to get in touch to suggest improvements to functionality <br/><br/>
 
-Phone: 804-972-1754
-Email: davidstinnett@icloud.com
+Phone: 804-972-1754 <br/>
+Email: davidstinnett@icloud.com<br/>
 LinkedIn: https://www.linkedin.com/davidnotonstinnett
