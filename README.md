@@ -8,7 +8,8 @@ Test file to check functionality of Marco's Pizza Website. Starts in terminal, o
 
 ## 1) Clone the Repo
 
-_the following assumes you have node, npm and npx installed_
+_the following assumes you have node, npm and npx installed._
+
 _text in italics are clarification on the steps_
 
 **_In your terminal:_**
