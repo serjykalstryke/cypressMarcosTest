@@ -47,4 +47,5 @@ npx cypress open
 
 # Media Gallery
 
-[Uploading CleanShot 2023-06-04 at 21.27.04.webm…]()
+[CleanShot 2023-06-04 at 21.27.04.webm](https://github.com/serjykalstryke/cypressMarcosTest/assets/68971513/c4c0d532-b5ee-437d-8ebf-6d69113c5398)
+
